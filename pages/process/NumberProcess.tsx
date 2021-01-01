@@ -1,7 +1,7 @@
 import Process from './Process'
-import INumber from './INumber'
+import INumber from '../data/INumber'
 
-class ClickNumberButton extends Process {
+class NumberProcess extends Process {
   protected value: number;
 
   public constructor(value: number) {
@@ -20,4 +20,4 @@ class ClickNumberButton extends Process {
   }
 }
 
-export default ClickNumberButton;
+export default NumberProcess;

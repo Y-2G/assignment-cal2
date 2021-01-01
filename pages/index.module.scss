@@ -1,37 +1,128 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;400&display=swap');
 
+$white: #fff;
+$black: #000;
+$dark-gray: #2b2b2b;
+$gray: #9c9c9c;
+$orange: #ff8200;
+
+$container-width: 448px;
+$container-height: 720px;
+$screen-width: 100%;
+$screen-height: 160px;
+
+
 .container {
     font-family: 'Oswald', sans-serif;
-    width: 200px;
-    height: 500px;
-    background: #000;
+    background-color: $black;
+    width: $container-width;
+    height: $container-height;
+    padding: 40px 0;
 
-    .display {
-        color: #fff;
-        background: #ccc;
-        width: 100%;
-        text-align: right;
+    .screen {
+        color: $white;
+        background-color: $dark-gray;
+        width: $screen-width;
+        height: $screen-height;
+        padding: 0 40px;
+        margin-bottom: 16px;
     }
 
     .process {
-        height: 1.5em;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        width: 100%;
+        height: 29px;
+        font-size: 32px;
+        position: relative;
+        top: 24px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 
     .result {
-        height: 1.5em;
-    }
-    
-    .row {
         display: flex;
+        align-items: center;
+        justify-content: flex-end;
         width: 100%;
+        height: 65px;
+        font-size: 64px;
+        position: relative;
+        top: 81px;
+        transform: translateY(-50%);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
 
-        .cell25 {
-            width: 25%;
-        }
+    .panel {
+        width: 100%;
+        padding: 0 40px;
 
-        .cell50 {
-            width: 50%;
+        .row {
+            display: flex;
+            width: 100%;
+            margin-bottom: 16px;
+    
+            .cell25 {
+                width: 80px;
+                height: 80px;
+                margin-right: 16px;
+                flex-shrink: 0;
+            }
+    
+            .cell50 {
+                width: 176px;
+                height: 80px;
+                margin-right: 16px;
+                flex-shrink: 0;
+            }
         }
+    }
+}
+
+.button {
+    appearance: none;
+    width: 100%;
+    height: 100%;
+    border: none;
+    font-family: 'Oswald', 'Myriad Pro Regular', sans-serif;
+    font-size: 40px;
+    color: #fff;
+    padding: 0;
+    cursor: pointer;
+
+    &:focus {
+        outline: none;
+    }
+
+    &.gray {
+        background-color: $gray;
+    }
+
+    &.darkgray {
+        background-color: $dark-gray;
+    }
+
+    &.orange {
+        background-color: $orange;
+    }
+
+    &.normal {
+        border-radius: 50%;
+    }
+
+    &.operator {
+        font-family: 'Myriad Pro Regular', sans-serif;
+        border-radius: 50%;
+    }
+
+    &.wide {
+        text-align: left;
+        padding: 0 31px;
+        border-radius: 25% 25% 25% 25% / 50% 50% 50% 50%;
     }
 }
 
