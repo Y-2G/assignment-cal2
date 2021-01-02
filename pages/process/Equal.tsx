@@ -1,15 +1,15 @@
 import Operator from './Operator'
-import INumber from '../data/INumber'
 
 class Equal extends Operator {
   protected value: string = '=';
 
-  public toString() {
+  public toString(): string {
     return this.next !== null ? this.next.toString() : '';
   }
 
-  public execute(inum: INumber) {
-    if(this.hasNext() === true) this.next.execute(inum)
+  public execute(n: number): number {
+    if(this.hasNext() === true) return this.next.execute(n);
+    return n;
   }
 }
 

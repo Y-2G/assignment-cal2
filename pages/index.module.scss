@@ -57,7 +57,7 @@ $screen-height: 160px;
         white-space: nowrap;
     }
 
-    .panel {
+    .controller {
         width: 100%;
         padding: 0 40px;
 
@@ -66,6 +66,21 @@ $screen-height: 160px;
             width: 100%;
             margin-bottom: 16px;
     
+            .cell {
+                margin-right: 16px;
+                flex-shrink: 0;
+
+                &.s1 {
+                    width: 80px;
+                    height: 80px;
+                }
+
+                &.s2 {
+                    width: 176px;
+                    height: 80px;
+                }
+            }
+
             .cell25 {
                 width: 80px;
                 height: 80px;

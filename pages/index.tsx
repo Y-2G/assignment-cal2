@@ -1,6 +1,8 @@
 import React from 'react';
 import Head from 'next/head';
-import Calculator from './Calculator';
+import Calculator from './component/Calculator';
+
+import Controller from './component/test'
 
 const Home: React.FC = () => (
   <div>

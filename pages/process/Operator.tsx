@@ -1,14 +1,13 @@
 import Process from './Process'
-import INumber from '../data/INumber'
 
 abstract class Operator extends Process {
   protected value: string;
 
-  public start() {
+  public start(): void {
     throw 'invalid value';
   }
 
-  public abstract execute(inum: INumber);
+  public abstract execute(n: number): number;
 }
 
 export default Operator;

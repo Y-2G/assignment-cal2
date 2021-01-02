@@ -2,15 +2,20 @@ import React from 'react';
 import Button from './Button';
 import Screen from './Screen';
 
-import Factory from './util/Factory';
-import CalcState from './process/CalcState';
-import Queue from './data/Queue';
-import Process from './process/Process';
+import Factory from '../util/Factory';
+import Queue from '../data/Queue';
+import Process from '../process/Process';
 
-import styles from './index.module.scss';
+import styles from '../index.module.scss';
 
 // 10進数として扱う最大桁数
 const MAX_DECIMAL_DIGITS: number = 9;
+
+type CalcState = {
+  result: string,
+  queue: Queue,
+  history: Queue[],
+}
 
 class Calculator extends React.Component<{}, CalcState> {
   constructor(props) {
@@ -26,12 +31,9 @@ class Calculator extends React.Component<{}, CalcState> {
   }
 
   async calc() {
-    // 計算を実行する
-    const inum = this.state.queue.execute();
-
     // 計算結果を取得する
-    const number: number = inum.getNumber();
-
+    const number: number = this.state.queue.execute();
+    
     // 計算結果を文字列に変換する
     const numstr: string = String(number);
 
@@ -41,7 +43,7 @@ class Calculator extends React.Component<{}, CalcState> {
     // 計算結果にカンマをつける
     let nr: string = numstr.replace(/(\d)(?=(\d\d\d)+$)/g, '$1,');
 
-    // 9桁以上の場合は指数表記に変換する
+    // 計算結果が9桁以上の場合は指数表記に変換する
     if(digit > MAX_DECIMAL_DIGITS) nr = String(number.toExponential());
 
     const nq = Factory.createQueue();
@@ -112,7 +114,7 @@ class Calculator extends React.Component<{}, CalcState> {
     return (
       <div className={styles.container}>
         <Screen process={this.state.queue.toString()} result={this.state.result} />
-        <div className={styles.panel}>
+        <div className={styles.controller}>
           <div className={styles.row}>
             <div className={styles.cell25}>
               <Button text="C" type={styles.normal} color={styles.gray} handleClick={() => this.clickClearButton()} />

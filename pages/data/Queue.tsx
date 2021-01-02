@@ -8,7 +8,7 @@ class Queue {
   }
 
   append(p: Process) {
-    if(this.children[0]) this.children[0].setNext(p)
+    if(this.children[0]) this.children[0].setNext(p);
     this.children.push(p);
   }
 

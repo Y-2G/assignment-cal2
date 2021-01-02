@@ -1,7 +1,6 @@
 import Process from './Process'
-import INumber from '../data/INumber'
 
-class NumberProcess extends Process {
+class ProcNum extends Process {
   protected value: number;
 
   public constructor(value: number) {
@@ -10,14 +9,12 @@ class NumberProcess extends Process {
   }
 
   public start() {
-    const inum = new INumber(this.value);
-    this.next.execute(inum);
-    return inum;
+    return this.next.execute(this.value);
   }
 
-  public execute(inum: INumber) {
-    this.next.execute(inum);
+  public execute(n: number) {
+    return this.next.execute(n);
   }
 }
 
-export default NumberProcess;
+export default ProcNum;
