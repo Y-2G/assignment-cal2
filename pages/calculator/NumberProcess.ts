@@ -8,6 +8,11 @@ class ProcNum extends Process {
     this.value = value;
   }
 
+  public setNext2(p: Process): void {
+    if(p instanceof ProcNum) throw 'commands of the same type consecutive';
+    this.next = p;
+  }
+
   public start() {
     return this.next.execute(this.value);
   }

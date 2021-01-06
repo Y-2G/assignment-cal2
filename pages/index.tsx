@@ -1,6 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
-import Calculator from './component/Calculator';
+import Container from './component/Container';
 
 const Home: React.FC = () => (
   <div>
@@ -8,8 +8,8 @@ const Home: React.FC = () => (
       <title>Calculator</title>
       <link rel="icon" href="/favicon.ico" />
     </Head>
-    <Calculator />
+    <Container />
   </div>
 )
 
-export default Home
+export default Home;
