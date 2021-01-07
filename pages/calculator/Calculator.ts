@@ -77,7 +77,7 @@ class Calculateor {
   }
 
   // コンポーネントからの入力を処理する
-  input(s: string): any {
+  input(s: string): void {
     // 数字が入力されたら結果に保存する
     if(isNaN(Number(this.result + s)) === false) return this.setResult(s);
 
