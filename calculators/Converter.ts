@@ -1,4 +1,4 @@
-import { MAX_DIGITS } from '../setting/data';
+import { MAX_DIGITS } from '../constants/data';
 
 // TODO: Strategy パターンを使ってみるといいかも
 

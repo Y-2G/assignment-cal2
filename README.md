@@ -10,12 +10,6 @@ npm install
 
 npm run dev
 
-# or
-
-yarn install
-
-yarn dev
-
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
@@ -40,3 +34,12 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## 備考
+
+この度は、制作課題の選考の機会をいただき、ありがとうございました。  
+また、課題の提出期限を勘違いしていたことについて改めてお詫び申し上げます。  
+課題に取り組む中で、自主制作とは違った視点や緊張感をもって制作を進めることができ、  
+Next.js、React.js、TypeScript といった技術への理解を深めることができました。  
+至らぬ点もあるとは思いますが、ご評価いただければと思います。  
+それでは、引き続きよろしくお願いいたします。

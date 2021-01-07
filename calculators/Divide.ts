@@ -1,5 +1,5 @@
 import Operator from './Operator'
-import { TEXT_DIVIDE } from '../setting/data';
+import { TEXT_DIVIDE } from '../constants/data';
 
 // 除算コマンドのクラス
 class Divide extends Operator {

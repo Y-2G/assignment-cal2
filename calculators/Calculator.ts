@@ -1,7 +1,7 @@
 import Command from './Command';
 import Converter from './Converter';
 import Factroy from './Factory';
-import { MAX_DIGITS } from '../setting/data';
+import { MAX_DIGITS } from '../constants/data';
 
 class Calculateor {
 

@@ -1,5 +1,5 @@
 import Command from './Command'
-import { TEXT_EQUAL } from '../setting/data';
+import { TEXT_EQUAL } from '../constants/data';
 
 // 等価コマンドのクラス
 class Equal extends Command {

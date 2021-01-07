@@ -1,5 +1,5 @@
 import Operator from './Operator'
-import { TEXT_MINUS } from '../setting/data';
+import { TEXT_MINUS } from '../constants/data';
 
 // 減算コマンドのクラス
 class Minus extends Operator {

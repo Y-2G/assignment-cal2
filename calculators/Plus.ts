@@ -1,5 +1,5 @@
 import Operator from './Operator'
-import { TEXT_PLUS } from '../setting/data';
+import { TEXT_PLUS } from '../constants/data';
 
 // 加算コマンドのクラス
 class Plus extends Operator {

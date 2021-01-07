@@ -13,22 +13,20 @@ $container-height: 720px;
 $container-padding: 40px 0;
 
 // Screen
-$screen-width: 100%;
 $screen-height: 160px;
 $screen-padding: 24px 40px;
 
 // Control
-$control-width: 100%;
 $control-height: 464px;
 $control-padding: 0 40px;
-
-// Line
-$line-width: 100%;
 
 // Button
 $btn-width: 80px;
 $btn-height: 80px;
+
 $btn-width-wide: 176px;
+$btn-height-wide: 80px;
+$btn-padding-wide: 0 31px;
 
 .container {
     font-family: 'Oswald', sans-serif;
@@ -43,7 +41,7 @@ $btn-width-wide: 176px;
         justify-content: space-between;
         color: $white;
         background-color: $dark-gray;
-        width: $screen-width;
+        width: 100%;
         height: $screen-height;
         padding: $screen-padding;
         margin-bottom: 16px;
@@ -53,7 +51,7 @@ $btn-width-wide: 176px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        width: $control-width;
+        width: 100%;
         height: $control-height;
         padding: $control-padding;
     }
@@ -61,7 +59,7 @@ $btn-width-wide: 176px;
     .line {
         display: flex;
         justify-content: space-between;
-        width: $line-width;
+        width: 100%;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
@@ -71,7 +69,6 @@ $btn-width-wide: 176px;
             text-align: right;
             font-size: 32px;
             line-height: 1;
-
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
@@ -92,6 +89,9 @@ $btn-width-wide: 176px;
             text-align: right;
             font-size: 64px;
             line-height: 1;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
     }
 
@@ -125,14 +125,13 @@ $btn-width-wide: 176px;
         }
     
         &.wide {
-            width: 176px;
-            height: 80px;
+            width: $btn-width-wide;
+            height: $btn-height-wide;
             text-align: left;
-            padding: 0 31px;
+            padding: $btn-padding-wide;
             border-radius: 20% 20% 20% 20% / 50% 50% 50% 50%;
             background-color: $dark-gray;
         }
     }
-
 }
 
