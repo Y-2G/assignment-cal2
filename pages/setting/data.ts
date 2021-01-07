@@ -34,7 +34,7 @@ export const BTN_SETTINGS = [
         {text: TEXT_7, type: styles.normal},
         {text: TEXT_8, type: styles.normal},
         {text: TEXT_9, type: styles.normal},
-        {text: TEXT_MINUS, type: styles.operator},
+        {text: TEXT_MULTIPLY, type: styles.operator},
     ],
     [
         {text: TEXT_4, type: styles.normal},
