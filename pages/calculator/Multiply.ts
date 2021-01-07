@@ -1,5 +1,6 @@
 import Operator from './Operator'
 
+// 乗算コマンドのクラス
 class Multiply extends Operator {
   protected value: string = '×';
 

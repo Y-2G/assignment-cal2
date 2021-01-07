@@ -1,11 +1,12 @@
-import Process from './Process'
+import Command from './Command'
 
-abstract class Operator extends Process {
+// 演算コマンドのベースクラス
+abstract class Operator extends Command {
   protected value: string;
 
-  public setNext2(p: Process): void {
-    if(p instanceof Operator) throw 'commands of the same type consecutive';
-    this.next = p;
+  public setNext(c: Command): void {
+    if(c instanceof Operator) throw 'commands of the same type consecutive';
+    this.next = c;
   }
 
   public start(): void {

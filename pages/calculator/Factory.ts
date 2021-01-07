@@ -1,10 +1,11 @@
 import Divide from './Divide';
-import Equal from './Equal';
-import Minus from './Minus';
 import Multiply from './Multiply';
+import Minus from './Minus';
 import Plus from './Plus';
-import NumberProcess from './NumberProcess';
+import Equal from './Equal';
+import ComNumber from './ComNumber';
 
+// インスタンス生成クラス
 class Factory {
 
   static createCommand(s: string) {
@@ -44,8 +45,8 @@ class Factory {
     return new Equal();
   }
 
-  static createNumber(n: number): NumberProcess {
-    return new NumberProcess(n);
+  static createNumber(n: number): ComNumber {
+    return new ComNumber(n);
   }
 
 }

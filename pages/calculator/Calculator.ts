@@ -1,56 +1,60 @@
-import Process from './Process';
+import Command from './Command';
 import Converter from './Converter';
 import Factroy from './Factory';
-
-const MAX_DECIMAL_DIGITS: number = 9;
+import { MAX_DIGITS } from '../setting/data';
 
 class Calculateor {
 
-  private list: Process[] = [];
+  private list: Command[] = [];
 
   private result: string = '0';
 
-  private isInitialize: boolean = false;
-
-  setResult(s: string) {
-    if((this.result + s).length > MAX_DECIMAL_DIGITS) return;
-    this.result = this.result !== '0' ? this.result.concat(s) : s;
+  // 配列を取得する
+  getList(): Command[] {
+    return this.list;
   }
 
+  // 結果を取得する
   getResult(): string {
-    return Converter.convert(this.result);
+    return Converter.formatForDisplay(this.result);
   }
 
-  getProcess(): string {
-    return this.list.length > 0 ? this.list[0].toString() : '';
+  // 配列末尾のインデックスを取得する
+  getLastIndex(): number {
+    return this.list.length > 0 ? this.list.length - 1 : 0;
   }
 
-  input(s: string) {
-    if(this.isInitialize === true) this.clear();
+  // 結果を設定する
+  setResult(s: string): void {
+    // 結果を一時保存する
+    const result = this.result.concat(s);
 
-    // 数字が入力された場合
-    if(isNaN(Number(this.result + s)) === false) return this.setResult(s);
-
-    // コマンドを生成
-    const n: Process = Factroy.createCommand(this.result);
-    const o: Process = Factroy.createCommand(s);
-
-    // コマンドを保存
-    this.push(n);
-    this.push(o);
-
-    // 演算子コマンドが入力されたら値をゼロにする
-    this.result = '0';
-  }
-
-  push(p: Process): void {
-    const i: number = this.list.length - 1;
-
-    if(i >= 0) this.list[i].setNext2(p);
+    // 設定した桁数を超えていたら何もしない
+    if(result.length > MAX_DIGITS) return;
     
-    this.list.push(p);
+    // 文字列処理を行って結果を保存する
+    this.result = Converter.zeroSuppress(result);
   }
 
+  // 配列にコマンドを追加する
+  push(c: Command): void {
+
+    // 等価コマンドに続けて入力した際に配列を初期化する
+    try {
+
+      const i: number = this.getLastIndex();
+
+      if(this.list[i]) this.list[i].setNext(c);
+    
+    } catch(e) {
+    
+      this.list = [];
+    
+    }
+    this.list.push(c);
+  }
+
+  // リストからコマンドを削除する
   pop(): void {
     // TODO: UX的にどうか？ (直前の入力に続けられたほうが自然？)
     // 後方２つの要素を削除している
@@ -67,30 +71,42 @@ class Calculateor {
 
     if(this.list.length === 0) return;
 
-    const i: number = this.list.length - 1;
+    const i: number = this.getLastIndex();
 
-    this.list[i].setNext2(null);
-
+    this.list[i].setNext(null);
   }
 
-  clear() {
-    this.result = '0';
+  // コンポーネントからの入力を処理する
+  input(s: string): any {
+    // 数字が入力されたら結果に保存する
+    if(isNaN(Number(this.result + s)) === false) return this.setResult(s);
 
+    // 演算子が入力されたらコマンドを生成する
+    const n: Command = Factroy.createCommand(this.result);
+
+    const o: Command = Factroy.createCommand(s);
+
+    this.push(n);
+
+    this.push(o);
+
+    this.result = '0';
+  }
+
+  // クラスを初期化する
+  clear(): void {
     this.list = [];
 
-    this.isInitialize = false;
+    this.result = '0';
   }
 
+  // コマンドを順次実行する
   execute(): string {
     if(this.list.length === 0) return '0';
 
     const result: number = this.list[0].start();
 
-    this.result = String(result)
-
-    if(this.result.length > MAX_DECIMAL_DIGITS) this.result = result.toExponential();
-
-    this.isInitialize = true;
+    this.result = String(result);
   }
 
 }

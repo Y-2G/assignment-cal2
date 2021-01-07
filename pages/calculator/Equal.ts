@@ -1,16 +1,25 @@
-import Operator from './Operator'
+import Command from './Command'
 
-class Equal extends Operator {
+// 等価コマンドのクラス
+class Equal extends Command {
   protected value: string = '=';
 
-  public toString(): string {
-    return this.next !== null ? this.next.toString() : '';
+  public setNext(c: Command): void {
+    throw 'equal is not able to have a next';
+  }
+
+  public start(): void {
+    throw 'start from the operator';
   }
 
   public execute(n: number): number {
-    if(this.hasNext() === true) return this.next.execute(n);
     return n;
   }
+
+  public getValue(): string {
+    return this.value;
+  }
+
 }
 
 export default Equal;

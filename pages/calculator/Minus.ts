@@ -1,5 +1,6 @@
 import Operator from './Operator'
 
+// 減算コマンドのクラス
 class Minus extends Operator {
   protected value: string = '-';
 

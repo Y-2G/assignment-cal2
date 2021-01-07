@@ -7,8 +7,9 @@ import Control from './Control';
 import Line from './Line';
 import Button from './Button';
 
-import { BTN_SETTINGS, CREAR_BTN_TEXT, EQUAL_BTN_TEXT } from '../setting/data';
+import { BTN_SETTINGS, BTN_TEXT_CLEAR, BTN_TEXT_EQUAL } from '../setting/data';
 
+// コンテナのコンポーネント
 const Container = () => {
   const [history, setHistory] = useState([new Calculator()]);
 
@@ -20,49 +21,71 @@ const Container = () => {
     setHistory([...history, calc]);
   }
 
+  // ボタンクリック時に実行する
   const onClick = (e) => {
     const value: string = e.target.textContent;
 
-    if(value === CREAR_BTN_TEXT) return clear();
+    if(value === BTN_TEXT_CLEAR) return clear();
 
     const calc = history.slice(-1)[0];
 
     calc.input(value);
 
-    if(value === EQUAL_BTN_TEXT) calc.execute();
+    if(value === BTN_TEXT_EQUAL) calc.execute();
 
     setHistory([...history, calc]);
   }
 
-  const renderControlLines = () => {
-    const rows = [];
+  // スクリーン上部の計算過程をレンダーする
+  const renderProcess = () => {
+    const calc = history.slice(-1)[0];
+    
+    const list = calc.getList();
 
-    for(const i in BTN_SETTINGS) {
-      rows.push(<Line className={styles.line} key={i}>{renderControlButtons(Number(i))}</Line>);
+    const jsx = [];
+
+    for(let i = 0; i < list.length; i++) {
+      // TODO: 必要？
+      // イコールはレンダーしないようにする
+      if(list[i].getValue() === BTN_TEXT_EQUAL) continue;
+      jsx.push(<span key={i}>{list[i].getValue()}</span>);
     }
 
-    return rows;
+    return jsx;
   }
 
+  // ボタンの行をレンダーする
+  const renderControlLines = () => {
+    const jsx = [];
+
+    for(const i in BTN_SETTINGS) {
+      jsx.push(<Line className={styles.line} key={i}>{renderControlButtons(Number(i))}</Line>);
+    }
+
+    return jsx;
+  }
+
+  // ボタンをレンダーする
   const renderControlButtons = (i: number) => {
-    const cells = [];
+    const jsx = [];
 
     for(const j in BTN_SETTINGS[i]) {
-      cells.push(
+      jsx.push(
         <Button key={`${i}-${j}`} type={BTN_SETTINGS[i][j].type} onClick={onClick}>
           {BTN_SETTINGS[i][j].text}
         </Button>
       );
     }
 
-    return cells;
+    return jsx;
   }
 
-  return(
+  // TODO: コンポーネントの設計をもっと工夫したい
+  return (
     <div className={styles.container}>
       <Screen>
-        <Line fontsize={styles.fs32}>{history.slice(-1)[0].getProcess()}</Line>
-        <Line fontsize={styles.fs64}>{history.slice(-1)[0].getResult()}</Line>
+        <Line><div className={styles.fs32}>{renderProcess()}</div></Line>
+        <Line><div className={styles.fs64}>{history.slice(-1)[0].getResult()}</div></Line>
       </Screen>
       <Control>
         {renderControlLines()}

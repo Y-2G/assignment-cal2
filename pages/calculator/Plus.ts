@@ -1,5 +1,6 @@
 import Operator from './Operator'
 
+// 加算コマンドのクラス
 class Plus extends Operator {
   protected value: string = '+';
 

@@ -1,5 +1,6 @@
 import Operator from './Operator'
 
+// 除算コマンドのクラス
 class Divide extends Operator {
   protected value: string = '÷';
 
