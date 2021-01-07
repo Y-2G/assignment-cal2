@@ -1,5 +1,3 @@
-import styles from '../components/index.module.scss';
-
 // 整数として取り扱う最大桁数
 export const MAX_DIGITS: number = 9;
 
@@ -27,31 +25,31 @@ export const TEXT_EQUAL:    string = '=';
 // 各種ボタンの設定
 export const BTN_SETTINGS = [
     [
-        {text: TEXT_CLEAR, type: styles.command},
-        {text: TEXT_DIVIDE, type: styles.operator},
+        {text: TEXT_CLEAR, type: 'command'},
+        {text: TEXT_DIVIDE, type: 'operator'},
     ],
     [
-        {text: TEXT_7, type: styles.normal},
-        {text: TEXT_8, type: styles.normal},
-        {text: TEXT_9, type: styles.normal},
-        {text: TEXT_MULTIPLY, type: styles.operator},
+        {text: TEXT_7, type: 'normal'},
+        {text: TEXT_8, type: 'normal'},
+        {text: TEXT_9, type: 'normal'},
+        {text: TEXT_MULTIPLY, type: 'operator'},
     ],
     [
-        {text: TEXT_4, type: styles.normal},
-        {text: TEXT_5, type: styles.normal},
-        {text: TEXT_6, type: styles.normal},
-        {text: TEXT_MINUS, type: styles.operator},
+        {text: TEXT_4, type: 'normal'},
+        {text: TEXT_5, type: 'normal'},
+        {text: TEXT_6, type: 'normal'},
+        {text: TEXT_MINUS, type: 'operator'},
     ],
     [
-        {text: TEXT_1, type: styles.normal},
-        {text: TEXT_2, type: styles.normal},
-        {text: TEXT_3, type: styles.normal},
-        {text: TEXT_PLUS, type: styles.operator},
+        {text: TEXT_1, type: 'normal'},
+        {text: TEXT_2, type: 'normal'},
+        {text: TEXT_3, type: 'normal'},
+        {text: TEXT_PLUS, type: 'operator'},
     ],
     [
-        {text: TEXT_0, type: styles.wide},
-        {text: TEXT_DOT, type: styles.normal},
-        {text: TEXT_EQUAL, type: styles.operator},
+        {text: TEXT_0, type: 'wide'},
+        {text: TEXT_DOT, type: 'normal'},
+        {text: TEXT_EQUAL, type: 'operator'},
     ],
 ];
 
