@@ -4,6 +4,7 @@ import Minus from './Minus';
 import Plus from './Plus';
 import Equal from './Equal';
 import ComNumber from './ComNumber';
+import Calclator from './Calculator'
 
 // インスタンス生成クラス
 class Factory {
@@ -49,6 +50,9 @@ class Factory {
     return new ComNumber(n);
   }
 
+  static createCalculator(): Calclator {
+    return new Calclator();
+  }
 }
 
 export default Factory;

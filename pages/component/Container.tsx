@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import styles from '../index.module.scss';
 
-import Calculator from '../calculator/Calculator';
 import Screen from './Screen';
 import Control from './Control';
 import Line from './Line';
 import Button from './Button';
 
-import { BTN_SETTINGS, BTN_TEXT_CLEAR, BTN_TEXT_EQUAL } from '../setting/data';
+import Factory from '../calculator/Factory';
+import { BTN_SETTINGS, TEXT_CLEAR, TEXT_EQUAL } from '../setting/data';
 
 // コンテナのコンポーネント
 const Container = () => {
-  const [history, setHistory] = useState([new Calculator()]);
+  const [history, setHistory] = useState([Factory.createCalculator()]);
 
   const clear = () => {
     const calc = history.slice(-1)[0];
@@ -25,13 +25,13 @@ const Container = () => {
   const onClick = (e) => {
     const value: string = e.target.textContent;
 
-    if(value === BTN_TEXT_CLEAR) return clear();
+    if(value === TEXT_CLEAR) return clear();
 
     const calc = history.slice(-1)[0];
 
     calc.input(value);
 
-    if(value === BTN_TEXT_EQUAL) calc.execute();
+    if(value === TEXT_EQUAL) calc.execute();
 
     setHistory([...history, calc]);
   }
@@ -45,9 +45,8 @@ const Container = () => {
     const jsx = [];
 
     for(let i = 0; i < list.length; i++) {
-      // TODO: 必要？
       // イコールはレンダーしないようにする
-      if(list[i].getValue() === BTN_TEXT_EQUAL) continue;
+      if(list[i].getValue() === TEXT_EQUAL) continue;
       jsx.push(<span key={i}>{list[i].getValue()}</span>);
     }
 

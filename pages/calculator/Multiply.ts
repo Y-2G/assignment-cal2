@@ -1,8 +1,9 @@
-import Operator from './Operator'
+import Operator from './Operator';
+import { TEXT_MULTIPLY } from '../setting/data';
 
 // 乗算コマンドのクラス
 class Multiply extends Operator {
-  protected value: string = '×';
+  protected value: string = TEXT_MULTIPLY;
 
   public execute(n: number): number {
     return this.next.execute(n * this.next.getValue());

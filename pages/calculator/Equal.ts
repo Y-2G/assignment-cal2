@@ -1,8 +1,9 @@
 import Command from './Command'
+import { TEXT_EQUAL } from '../setting/data';
 
 // 等価コマンドのクラス
 class Equal extends Command {
-  protected value: string = '=';
+  protected value: string = TEXT_EQUAL;
 
   public setNext(c: Command): void {
     throw 'equal is not able to have a next';
