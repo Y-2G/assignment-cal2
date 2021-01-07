@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from '../index.module.scss';
+import styles from './index.module.scss';
 
 import Screen from './Screen';
 import Control from './Control';

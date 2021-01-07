@@ -1,6 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
-import Container from './component/Container';
+import Container from '../components/Container';
 
 const Home: React.FC = () => (
   <div>

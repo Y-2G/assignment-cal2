@@ -1,4 +1,4 @@
-import styles from '../index.module.scss';
+import styles from '../components/index.module.scss';
 
 // 整数として取り扱う最大桁数
 export const MAX_DIGITS: number = 9;
